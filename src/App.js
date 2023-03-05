@@ -1,4 +1,4 @@
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, Box, Typography} from '@mui/material/';
 import React from 'react'
 import Profile from './components/Profile/Profile'
 import Footer from './components/Footer/Footer'
@@ -10,27 +10,30 @@ import './App.css';
 
 function App() {
   return (
-    <Container>
-      <Grid container>
-        <Grid 
-        item xs={12} 
-        sm={12} md={4} 
-        lg={4}>
-          <Profile/>
-        </Grid>
+      <Container className='top_60'>
+        <Grid container columnGap={7}>
+          <Grid
+          Spacing={10} 
+          item 
+          xs={12} 
+          sm={12} 
+          md={4} 
+          lg={3}>
+            <Profile/>
+          </Grid>
+          <Grid  item xs style={{backgroundColor: 'pink'}}>
+            <Header/>
+            <HashRouter>
+              <Routes>
+                <Route path='/Portfolio' element={<Portfolio/>}/>
+                <Route path="/" element={<Resume/>}/>
+              </Routes>
+            </HashRouter>
 
-        <Grid item xs style={{backgroundColor: 'pink'}}>
-          <Header/>
-          <HashRouter>
-            <Routes>
-              <Route path='/Portfolio' element={<Portfolio/>}/>
-              <Route path="/" element={<Resume/>}/>
-            </Routes>
-          </HashRouter>
-         <Footer/>
+          <Footer/>
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
   );
 }
 

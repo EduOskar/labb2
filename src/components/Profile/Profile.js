@@ -6,15 +6,22 @@ import PersonIcon from '@mui/icons-material/Person';
 
 import './Profile.css'
 import { TimelineContent, TimelineItem } from '@mui/lab';
+import { Key } from '@mui/icons-material';
 
 const CustomTimeLineItem = ({title, text, link}) => (
     <TimelineItem>
         <CustomTimelineSeperator/>
-        <TimelineContent>
-            {link ? (<Typography>
-                <span>{title}</span> <a href={link} target='_blank'>{text}</a>
+        <TimelineContent className="timeline_content">
+            {link ? (
+            <Typography className='timelineItem_text'>
+                <span>{title}: </span>{" "} 
+                <a href={link} target="_blank">
+                    {text}
+                </a>
             </Typography>) : (
-                <Typography><span>{title}</span>{text}</Typography>
+                <Typography className='timelineItem_text'>
+                    <span>{title}</span>{text}
+                </Typography>
             )}
         </TimelineContent>
     </TimelineItem>
@@ -34,7 +41,15 @@ const Profile=()=>{
             </figure>
 
             <div className='profile_information'>
-             <CustomTimeLine icon={<PersonIcon/>}></CustomTimeLine>
+             <CustomTimeLine icon={<PersonIcon/>}> 
+             <CustomTimeLineItem title='Name: ' text={resumeData.name}/>
+             <CustomTimeLineItem title= 'Title: ' text={resumeData.title}/>
+             <CustomTimeLineItem title='Mail: ' text={resumeData.email}/>
+
+             {Object.keys(resumeData.socials).map(key =>(
+                 <CustomTimeLineItem title={key} text={ resumeData.socials[key].text } link={resumeData.socials[key].link}/>
+             ))}
+             </CustomTimeLine>
                 <br/>
                 <button>My button</button>
             </div>

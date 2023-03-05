@@ -26,11 +26,9 @@ const CustomTimeLine = ({title,icon ,children}) => {
             <Typography 
             variant='h6' 
             className={'timeline_header'}>
-                {'title'}
             </Typography>
             </TimelineContent>
         </TimelineItem>
-
         {children}
         </Timeline>  
     );
